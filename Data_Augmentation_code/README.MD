@@ -1,5 +1,4 @@
-## Reference :
-https://chatgpt.com
+
 # Data Augmentation Pipeline
 
 This project implements a data augmentation pipeline for text, audio, image, and sensor data. 
