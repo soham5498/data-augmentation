@@ -1,0 +1,284 @@
+{
+    "data": {
+        "base_input_path": "/home/bcae/AI_Project/AI_project/input_data",
+        "base_output_path": "/home/bcae/AI_Project/AI_project/augmented_data"
+    },
+    "data_augmentation": {
+        "text_augmentation": {
+            "file_path": "text/Reviews.csv",
+            "output_path": "text",
+            "text_columns": ["Summary"],
+            "synonym_replacement": {
+                "enabled": true,
+                "top_n": 3
+            },
+            "add_noise": {
+                "enabled": true,
+                "noise_level": "low"
+            },
+            "random_insertion": {
+                "enabled": true,
+                "num_inserts": 3
+            },
+            "random_deletion": {
+                "enabled": true,
+                "probability": 0.2
+            },
+            "random_swap": {
+                "enabled": true,
+                "num_swaps": 2
+            },
+            "correct_grammar": {
+                "enabled": true
+            },
+            "bert_augmentation": {
+                "enabled": true
+            },
+            "generation": {
+                "enabled": true,
+                "model": "gpt2",
+                "temperature": 0.7,
+                "num_beams": 5,
+                "max_new_tokens": 50
+            },
+            "back_translation": {
+                "enabled": true,
+                "target_language": "fr",
+                "source_language": "en"
+            },
+            "paraphrasing": {
+                "enabled": true
+            },
+            "style_transfer_nmt": {
+                "enabled": true,
+                "target_style": "en"
+            },
+            "hierarchical_text_generation": {
+                "enabled": true
+            },
+            "conditional_text_generation": {
+                "enabled": true
+            },
+            "stochastic_text_generation": {
+                "enabled": true
+            }
+        },
+        "audio_augmentation": {
+            "file_path": "audio/latest_output_audio(3).wav",
+            "output_path": "audio",
+            "sample_rate": 16000,
+            "add_noise": {
+                "enabled": true,
+                "noise_factor": 0.3
+            },
+            "reverse_audio": {
+                "enabled": true
+            },
+            "change_speed": {
+                "enabled": true,
+                "speed_factor": 2.0
+            },
+            "slow_down_audio": {
+                "enabled": true,
+                "rate": 0.5
+            },
+            "add_echo": {
+                "enabled": true,
+                "delay": 0.5,
+                "decay": 0.6
+            },
+            "pitch_shift": {
+            "enabled": true,
+            "n_steps": 2
+            },
+            "time_masking": {
+            "enabled": true,
+            "mask_time": 0.5
+        },
+            "add_sonic_boom_effect": {
+            "enabled": true,
+            "delay": 0.05,
+            "increase_factor": 10,
+            "decay": 0.6
+        }
+        },
+        "image_augmentation": {
+            "file_path": "image",
+            "output_path": "image",
+            "base_transform": {
+                "type": "Compose",
+                "transforms": [
+                    {
+                        "type": "Resize",
+                        "size": [128, 128]
+                    }
+                ]
+            },
+            "aug_transforms": [
+                    {
+                        "type": "Compose",
+                        "transforms": [
+                            {
+                                "type": "RandomHorizontalFlip",
+                                "p": 1.0
+                            }
+                        ]
+                    },
+                    {
+                        "type": "Compose",
+                        "transforms": [
+                            {
+                                "type": "RandomRotation",
+                                "degrees": 15
+                            }
+                        ]
+                    },
+                    {
+                        "type": "Compose",
+                        "transforms": [
+                            {
+                                "type": "Grayscale"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "Compose",
+                        "transforms": [
+                            {
+                                "type": "RandomVerticalFlip",
+                                "p": 1.0
+                            }
+                        ]
+                    },
+                    {
+                        "type": "Compose",
+                        "transforms": [
+                            {
+                                "type": "ColorJitter",
+                                "brightness": 0.5,
+                                "hue": 0.3
+                            }
+                        ]
+                    },
+                    {
+                        "type": "Compose",
+                        "transforms": [
+                            {
+                                "type": "RandomAffine",
+                                "degrees": 30,
+                                "translate": [0.1, 0.1],
+                                "scale": [0.8, 1.2]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "Compose",
+                        "transforms": [
+                            {
+                                "type": "GaussianBlur",
+                                "kernel_size": [5, 9],
+                                "sigma": [0.1, 5]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "Compose",
+                        "transforms": [
+                            {
+                                "type": "RandomPosterize",
+                                "bits": 2
+                            }
+                        ]
+                    },
+                    {
+                        "type": "Compose",
+                        "transforms": [
+                            {
+                                "type": "CenterCrop",
+                                "size": 150
+                            }
+                        ]
+                    },
+                    {
+                        "type": "Compose",
+                        "transforms": [
+                            {
+                                "type": "RandomPerspective",
+                                "distortion_scale": 0.6,
+                                "p": 1.0
+                            }
+                        ]
+                    },
+                    {
+                        "type": "Compose",
+                        "transforms": [
+                            {
+                                "type": "RandomVerticalFlip",
+                                "p": 0.5
+                            }
+                        ]
+                    },
+                    {
+                        "type": "Compose",
+                        "transforms": [
+                            {
+                                "type": "RandAugment"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "Compose",
+                        "transforms": [
+                            {
+                                "type": "AugMix"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "Compose",
+                        "transforms": [
+                            {
+                                "type": "TrivialAugmentWide"
+                            }
+                        ]
+                    }
+                ]
+        },
+        "sensor_augmentation": {
+            "script_path": "sensor/smoke_detection_iot.csv",
+            "output_path": "sensor",
+            "exclude_columns": ["UTC","Fire Alarm"],
+            "techniques": {
+                "add_gaussian_noise": {
+                    "enabled": true,
+                    "mean": 0,
+                    "std": 0.01
+                },
+                "add_uniform_noise": {
+                    "enabled": true,
+                    "low": -0.01,
+                    "high": 0.01
+                },
+                "DA_Jitter": {
+                    "enabled": true,
+                    "sigma": 0.05
+                },
+                "DA_Scaling": {
+                    "enabled": true,
+                    "sigma": 0.1
+                },
+                "GenerateRandomCurves": {
+                    "enabled": true,
+                    "sigma": 0.2,
+                    "knot": 4
+                },
+                "DA_Permutation": {
+                    "enabled": true,
+                    "nPerm": 3,
+                    "minSegLength": 10,
+                    "noise_factor": 0.1
+                }
+            }
+        }
+    }
+}
