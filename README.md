@@ -137,3 +137,11 @@ Below is an example configuration file:
     Generate Random Curves
     Distort Timesteps
     DA Permutation
+
+
+
+```
+## Authors
+
+Soham Joita
+Sristi Bhadani
