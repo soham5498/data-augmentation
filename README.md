@@ -140,7 +140,6 @@ Below is an example configuration file:
 
 
 
-```
 ## Authors
 
 Soham Joita
